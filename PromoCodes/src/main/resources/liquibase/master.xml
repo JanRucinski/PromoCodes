@@ -8,5 +8,6 @@
     <property name="now" value="now()" dbms="h2"/>
 
     <include file="classpath:/liquibase/changelog/001_product.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:/liquibase/changelog/002_promo_code.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

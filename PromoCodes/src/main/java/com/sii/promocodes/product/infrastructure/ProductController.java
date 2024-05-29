@@ -28,6 +28,11 @@ public class ProductController {
         return productFacade.getAllProducts();
     }
 
+    @GetMapping("/{id}")
+    public ProductApi.Product getProduct(@PathVariable UUID id) {
+        return productFacade.getProduct(id);
+    }
+
     @PutMapping("/{id}")
     public ProductApi.Product updateProduct(@PathVariable UUID id, @RequestBody @Valid ProductApi.UpdateProductRequest request) {
         return productFacade.updateProduct(id, request);

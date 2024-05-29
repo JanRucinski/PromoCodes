@@ -7,6 +7,7 @@ import com.sii.promocodes.product.infrastructure.ProductController
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.context.annotation.Import
 import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
@@ -25,19 +26,21 @@ class ProductRestITSpec extends Specification {
     @Autowired
     private MockMvc mockMvc
 
-    private ProductFacade productFacade = new DetachedMockFactory().Mock(ProductFacade)
+    @MockBean
+    private ProductFacade productFacade = Mock()
+
     private ObjectMapper objectMapper = new ObjectMapper()
 
     def "should create a product"() {
         when:
-            def response = mockMvc.perform(post("/api/product")
-                    .content(objectMapper.writeValueAsString(createProductRequest())))
+        def response = mockMvc.perform(post("/api/product")
+                .content(objectMapper.writeValueAsString(createProductRequest())))
 
         then:
-            response.andExpect(status().isCreated())
-                    .andExpect(content().json(objectMapper.writeValueAsString(createProductDto())))
+        response.andExpect(status().isCreated())
+                .andExpect(content().json(objectMapper.writeValueAsString(createProductDto())))
 
         and:
-            1 * productFacade.createProduct(createProductRequest()) >> createProductDto()
+        1 * productFacade.createProduct(createProductRequest()) >> createProductDto()
     }
 }

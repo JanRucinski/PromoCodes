@@ -42,7 +42,7 @@ class ProductSpec extends ProductBaseSpec{
             productFacade.createProduct(createProductRequest())
 
             when:
-            var response = productFacade.getProductById(ID)
+            var response = productFacade.getProduct(ID)
 
             then:
             response == createProductDto()

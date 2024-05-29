@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="createPromoCodeSchema" author="JRucinski">
+        <createTable tableName="promo_code">
+            <column name="code" type="varchar(24)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="max_usages" type="int" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_usages" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="usability" type="varchar(8)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal(10, 2)" defaultValue="0.00">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="varchar(3)" defaultValue="PLN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiration_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -11,6 +11,11 @@ class InMemoryRepository<T, ID> implements CrudRepository<T, ID> {
         store[object.id as ID] = object
     }
 
+    T save(ID id, T object) {
+        store[id] = object
+        return object
+    }
+
     @Override
     <S extends T> Iterable<S> saveAll(Iterable<S> objects) {
         objects.collect { save(it) }

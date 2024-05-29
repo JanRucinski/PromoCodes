@@ -26,6 +26,10 @@ public class ProductFacade {
                 .toList();
     }
 
+    public ProductApi.Product getProduct(UUID id) {
+        return productRepository.loadById(id).toDto();
+    }
+
     public ProductApi.Product updateProduct(UUID id, ProductApi.UpdateProductRequest request) {
         Product product = productRepository.loadById(id);
         product.update(request);

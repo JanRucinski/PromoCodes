@@ -19,5 +19,4 @@ class ProductBaseSpec extends Specification {
         productConfiguration = new ProductConfiguration(productRepository)
     }
 
-
 }
