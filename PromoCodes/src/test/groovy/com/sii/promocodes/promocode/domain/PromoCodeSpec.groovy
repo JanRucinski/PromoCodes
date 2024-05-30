@@ -16,7 +16,7 @@ class PromoCodeSpec extends PromoCodeBaseSpec{
         given:
         promoCodeFacade.createPromoCode(createPromoCodeRequest())
         promoCodeFacade.createPromoCode(createPromoCodeRequest({
-            code = CODE_2
+            code = EUR_CODE_EXPIRED
         }))
 
         when:
@@ -24,7 +24,7 @@ class PromoCodeSpec extends PromoCodeBaseSpec{
 
         then:
         response.size() == 2
-        response.stream().anyMatch { it.code == CODE }
-        response.stream().anyMatch { it.code == CODE_2 }
+        response.stream().anyMatch { it.code == EUR_CODE_ACTIVE }
+        response.stream().anyMatch { it.code == EUR_CODE_EXPIRED }
     }
 }

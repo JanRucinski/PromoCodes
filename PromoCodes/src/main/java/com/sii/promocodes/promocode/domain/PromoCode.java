@@ -39,6 +39,7 @@ public class PromoCode {
     private Currency currency;
 
     @NotNull
+
     private LocalDate expirationDate;
 
     PromoCode(PromoCodeApi.CreatePromoCodeRequest request) {

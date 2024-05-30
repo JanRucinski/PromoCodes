@@ -7,7 +7,7 @@ class ProductSpec extends ProductBaseSpec{
 
         def "should create a product"() {
             given:
-            RandomStringGenerator.setFixedUuidValue(ID)
+            RandomStringGenerator.setFixedUuidValue(EUR_PRODUCT_ID)
 
             when:
             var response = productFacade.createProduct(createProductRequest())
@@ -18,11 +18,11 @@ class ProductSpec extends ProductBaseSpec{
 
         def "should get all products"() {
             given:
-            RandomStringGenerator.setFixedUuidValue(ID)
+            RandomStringGenerator.setFixedUuidValue(EUR_PRODUCT_ID)
             productFacade.createProduct(createProductRequest())
-            RandomStringGenerator.setFixedUuidValue(ID_2)
+            RandomStringGenerator.setFixedUuidValue(USD_PRODUCT_ID)
             productFacade.createProduct(createProductRequest({
-                name = NAME_2
+                name = USD_PRODUCT_NAME
             }))
 
             when:
@@ -30,19 +30,19 @@ class ProductSpec extends ProductBaseSpec{
 
             then:
             response.size() == 2
-            response.stream().anyMatch { it.id == ID }
-            response.stream().anyMatch { it.id == ID_2 }
-            response.stream().anyMatch { it.name == NAME }
-            response.stream().anyMatch { it.name == NAME_2 }
+            response.stream().anyMatch { it.id == EUR_PRODUCT_ID }
+            response.stream().anyMatch { it.id == USD_PRODUCT_ID }
+            response.stream().anyMatch { it.name == EUR_PRODUCT_NAME }
+            response.stream().anyMatch { it.name == USD_PRODUCT_NAME }
         }
 
         def "should update product"() {
             given:
-            RandomStringGenerator.setFixedUuidValue(ID)
+            RandomStringGenerator.setFixedUuidValue(EUR_PRODUCT_ID)
             productFacade.createProduct(createProductRequest())
 
             when:
-            var response = productFacade.getProduct(ID)
+            var response = productFacade.getProduct(EUR_PRODUCT_ID)
 
             then:
             response == createProductDto()
@@ -50,11 +50,11 @@ class ProductSpec extends ProductBaseSpec{
 
         def "should delete product"() {
             given:
-            RandomStringGenerator.setFixedUuidValue(ID)
+            RandomStringGenerator.setFixedUuidValue(EUR_PRODUCT_ID)
             productFacade.createProduct(createProductRequest())
 
             when:
-            productFacade.deleteProduct(ID)
+            productFacade.deleteProduct(EUR_PRODUCT_ID)
 
             then:
             productFacade.getAllProducts().size() == 0
