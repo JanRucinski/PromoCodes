@@ -5,19 +5,23 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-  <changeSet author="JRucinski" id="createProductSchema">
-    <createTable tableName="product">
+  <changeSet author="JRucinski" id="createPurchaseSchema">
+    <createTable tableName="purchase">
       <column name="id" type="uuid">
         <constraints primaryKey="true"/>
       </column>
-      <column name="name" type="varchar(255)">
+      <column name="product_id" type="uuid"/>
+      <column name="product_name" type="varchar(255)">
         <constraints nullable="false"/>
       </column>
-      <column name="description" type="varchar(255)"/>
-      <column defaultValue="0.00" name="price" type="decimal(10, 2)">
+      <column defaultValue="0.00" name="original_price" type="decimal(10, 2)">
         <constraints nullable="false"/>
       </column>
+      <column defaultValue="0.00" name="discount_amount" type="decimal(10, 2)"/>
       <column defaultValue="PLN" name="currency" type="varchar(3)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="purchase_date" type="date">
         <constraints nullable="false"/>
       </column>
 

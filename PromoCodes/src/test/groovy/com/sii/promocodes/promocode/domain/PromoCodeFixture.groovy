@@ -13,9 +13,11 @@ class PromoCodeFixture {
     static final String EUR_CODE_ACTIVE = "CODE ACTIVE"
     static final String EUR_CODE_EXPIRED = "CODE EXPIRED"
     static final String EUR_CODE_DEPLETED = "CODE DEPLETED"
+    static final String EUR_CODE_ACTIVE_999 = "CODE ACTIVE 999"
     static final int MAX_USAGES = 10
     static final BigDecimal AMOUNT_10 = BigDecimal.valueOf(10)
     static final BigDecimal AMOUNT_15 = BigDecimal.valueOf(15)
+    static final BigDecimal AMOUNT_999 = BigDecimal.valueOf(999)
     static final Currency CURRENCY = Currency.EUR
     static final LocalDate EXPIRATION_DATE_ACTIVE_CODE = LocalDate.now().plusDays(10)
     static final LocalDate EXPIRATION_DATE_EXPIRED_CODE = LocalDate.now().minusDays(10)
@@ -75,6 +77,12 @@ class PromoCodeFixture {
             code = EUR_CODE_DEPLETED
             usability = DEPLETED
             currentUsages = MAX_USAGES
+        })
+    }
+
+    static PromoCodeApi.PromoCode createBigPromoCodeDto() {
+        createPromoCodeDto({
+            amount = AMOUNT_999
         })
     }
 

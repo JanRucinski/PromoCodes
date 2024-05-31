@@ -3,24 +3,25 @@ package com.sii.promocodes.commons.db;
 import java.util.UUID;
 
 public class RandomStringGenerator {
-    private static UUID fixedUuidValue;
 
-    private RandomStringGenerator() {
-    }
+  private static UUID fixedUuidValue;
 
-    public static void setFixedUuidValue(UUID value) {
-        fixedUuidValue = value;
-    }
+  private RandomStringGenerator() {
+  }
 
-    public static void cleanup() {
-        fixedUuidValue = null;
-    }
+  public static void setFixedUuidValue(UUID value) {
+    fixedUuidValue = value;
+  }
 
-    public static UUID randomUUID() {
-        if (fixedUuidValue == null) {
-            return UUID.randomUUID();
-        }
-        return fixedUuidValue;
+  public static void cleanup() {
+    fixedUuidValue = null;
+  }
+
+  public static UUID randomUUID() {
+    if (fixedUuidValue == null) {
+      return UUID.randomUUID();
     }
+    return fixedUuidValue;
+  }
 
 }

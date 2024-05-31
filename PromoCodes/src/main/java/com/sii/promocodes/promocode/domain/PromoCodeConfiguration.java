@@ -8,10 +8,11 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class PromoCodeConfiguration {
 
-        private final PromoCodeRepository promoCodeRepository;
+  private final PromoCodeRepository promoCodeRepository;
 
-        @Bean
-        PromoCodeFacade promoCodeFacade() {
-            return new PromoCodeFacade(promoCodeRepository);
-        }
+  @Bean
+  PromoCodeFacade promoCodeFacade() {
+    return new PromoCodeFacade(promoCodeRepository);
+  }
+
 }

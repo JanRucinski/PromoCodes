@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class PriceCalculatorConfiguration {
 
-    private final PromoCodeFacade promoCodeFacade;
-    private final ProductFacade productFacade;
+  private final PromoCodeFacade promoCodeFacade;
+  private final ProductFacade productFacade;
 
-    @Bean
-    public PriceCalculatorFacade priceCalculatorFacade() {
-        return new PriceCalculatorFacade(productFacade, promoCodeFacade);
-    }
+  @Bean
+  public PriceCalculatorFacade priceCalculatorFacade() {
+    return new PriceCalculatorFacade(productFacade, promoCodeFacade);
+  }
 
 }

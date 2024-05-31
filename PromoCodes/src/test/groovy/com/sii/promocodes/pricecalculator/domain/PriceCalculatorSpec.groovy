@@ -61,4 +61,17 @@ class PriceCalculatorSpec extends PriceCalculatorBaseSpec {
         response.calculatedPrice == BASE_PRICE
         response.warning == CURRENCIEC_MISMATCH_WARNING
     }
+
+    def "should return 0 when calculating with a promo code that gives too big of a discount" () {
+        when:
+        var response = priceCalculatorFacade.calculatePrice(createCalculatePriceRequest(
+                {
+                    productId = EUR_PRODUCT_ID
+                    promoCode = EUR_CODE_ACTIVE_999
+                }
+        ))
+
+        then:
+        response.calculatedPrice == 0
+    }
 }

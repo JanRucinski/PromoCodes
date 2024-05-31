@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class ProductConfiguration {
 
-        private final ProductRepository productRepository;
+  private final ProductRepository productRepository;
 
-        @Bean
-        ProductFacade productFacade() {
-            return new ProductFacade(productRepository);
-        }
+  @Bean
+  ProductFacade productFacade() {
+    return new ProductFacade(productRepository);
+  }
 
 }
