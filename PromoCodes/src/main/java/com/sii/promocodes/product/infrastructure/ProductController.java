@@ -2,6 +2,7 @@ package com.sii.promocodes.product.infrastructure;
 
 import com.sii.promocodes.product.domain.ProductFacade;
 import com.sii.promocodes.product.dto.ProductApi;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -27,6 +28,7 @@ public class ProductController {
 
   private final ProductFacade productFacade;
 
+  @Operation(summary = "Create a product", description = "Create a product with a name, description, price and currency")
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
   public ProductApi.Product createProduct(
@@ -34,23 +36,26 @@ public class ProductController {
     return productFacade.createProduct(request);
   }
 
-  @Schema(description = "Retrieve products")
+  @Operation(summary = "Retrieve all products", description = "Retrieve all products")
   @GetMapping("/all")
   public List<ProductApi.Product> getProducts() {
     return productFacade.getAllProducts();
   }
 
+  @Operation(summary = "Retrieve a product by id", description = "Retrieve a product by id")
   @GetMapping("/{id}")
   public ProductApi.Product getProduct(@PathVariable UUID id) {
     return productFacade.getProduct(id);
   }
 
+  @Operation(summary = "Update a product by id", description = "Update a product by id with a name, description, price or currency")
   @PutMapping("/{id}")
   public ProductApi.Product updateProduct(@PathVariable UUID id,
       @RequestBody @Valid ProductApi.UpdateProductRequest request) {
     return productFacade.updateProduct(id, request);
   }
 
+  @Operation(summary = "Delete a product by id", description = "Delete a product by id")
   @DeleteMapping("/{id}")
   public void deleteProduct(@PathVariable UUID id) {
     productFacade.deleteProduct(id);

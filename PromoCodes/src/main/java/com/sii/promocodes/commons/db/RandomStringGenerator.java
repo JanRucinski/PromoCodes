@@ -13,10 +13,6 @@ public class RandomStringGenerator {
     fixedUuidValue = value;
   }
 
-  public static void cleanup() {
-    fixedUuidValue = null;
-  }
-
   public static UUID randomUUID() {
     if (fixedUuidValue == null) {
       return UUID.randomUUID();

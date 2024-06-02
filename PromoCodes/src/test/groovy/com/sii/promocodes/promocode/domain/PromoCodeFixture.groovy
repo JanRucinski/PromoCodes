@@ -1,24 +1,28 @@
 package com.sii.promocodes.promocode.domain
 
 import com.sii.promocodes.commons.enums.Currency
+import com.sii.promocodes.commons.enums.DiscountType
 import com.sii.promocodes.commons.enums.Usability
 import com.sii.promocodes.promocode.dto.PromoCodeApi
 
 import java.time.LocalDate
 
+import static com.sii.promocodes.commons.enums.Currency.EUR
+import static com.sii.promocodes.commons.enums.DiscountType.FLAT
+import static com.sii.promocodes.commons.enums.DiscountType.PERCENTAGE
 import static com.sii.promocodes.commons.enums.Usability.*
 
 class PromoCodeFixture {
 
-    static final String EUR_CODE_ACTIVE = "CODE ACTIVE"
-    static final String EUR_CODE_EXPIRED = "CODE EXPIRED"
-    static final String EUR_CODE_DEPLETED = "CODE DEPLETED"
-    static final String EUR_CODE_ACTIVE_999 = "CODE ACTIVE 999"
+    static final String EUR_CODE_ACTIVE = "CODEACTIVE"
+    static final String EUR_CODE_EXPIRED = "CODEEXPIRED"
+    static final String EUR_CODE_DEPLETED = "CODEDEPLETED"
+    static final String EUR_CODE_ACTIVE_999 = "CODEACTIVE999"
+    static final String EUR_CODE_ACTIVE_50_PERCENT = "CODEACTIVE50PERCENT"
     static final int MAX_USAGES = 10
     static final BigDecimal AMOUNT_10 = BigDecimal.valueOf(10)
-    static final BigDecimal AMOUNT_15 = BigDecimal.valueOf(15)
+    static final BigDecimal AMOUNT_50 = BigDecimal.valueOf(50.00)
     static final BigDecimal AMOUNT_999 = BigDecimal.valueOf(999)
-    static final Currency CURRENCY = Currency.EUR
     static final LocalDate EXPIRATION_DATE_ACTIVE_CODE = LocalDate.now().plusDays(10)
     static final LocalDate EXPIRATION_DATE_EXPIRED_CODE = LocalDate.now().minusDays(10)
 
@@ -26,10 +30,11 @@ class PromoCodeFixture {
         String code = EUR_CODE_ACTIVE
         int maxUsages = MAX_USAGES
         BigDecimal amount = AMOUNT_10
-        Currency currency = CURRENCY
+        Currency currency = EUR
         LocalDate expirationDate = EXPIRATION_DATE_ACTIVE_CODE
         int currentUsages = 0
         Usability usability = ACTIVE
+        DiscountType discountType = FLAT
 
         PromoCodeApi.CreatePromoCodeRequest buildCreatePromoCodeRequest() {
 
@@ -38,7 +43,8 @@ class PromoCodeFixture {
                     maxUsages,
                     amount,
                     currency,
-                    expirationDate
+                    expirationDate,
+                    discountType
             )
         }
 
@@ -50,7 +56,8 @@ class PromoCodeFixture {
                     usability,
                     amount,
                     currency,
-                    expirationDate
+                    expirationDate,
+                    discountType
             )
         }
 
@@ -77,6 +84,14 @@ class PromoCodeFixture {
             code = EUR_CODE_DEPLETED
             usability = DEPLETED
             currentUsages = MAX_USAGES
+        })
+    }
+
+    static PromoCodeApi.PromoCode createPromoCodeWith50PercentDiscount() {
+        createPromoCodeDto({
+            code = EUR_CODE_ACTIVE_50_PERCENT
+            amount = AMOUNT_50
+            discountType = PERCENTAGE
         })
     }
 

@@ -6,10 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
   <include file="classpath:/liquibase/changelog/001_product.xml" relativeToChangelogFile="false"/>
-
-  <include file="classpath:/liquibase/changelog/002_promo_code.xml"
-    relativeToChangelogFile="false"/>
+  <include file="classpath:/liquibase/changelog/002_promo_code.xml" relativeToChangelogFile="false"/>
   <include file="classpath:/liquibase/changelog/003_purchase.xml" relativeToChangelogFile="false"/>
-  <property dbms="h2" name="now" value="now()"/>
 
 </databaseChangeLog>

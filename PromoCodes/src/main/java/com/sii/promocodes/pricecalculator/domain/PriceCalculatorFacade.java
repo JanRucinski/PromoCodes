@@ -49,8 +49,7 @@ public class PriceCalculatorFacade {
       ProductApi.Product product) {
     return switch (promoCode.getDiscountType()) {
       case FLAT -> calculateFlatDiscountPrice(product.getPrice(), promoCode.getAmount());
-      case PERCENTAGE ->
-          calculatePercentageDiscountPrice(product.getPrice(), promoCode.getAmount());
+      case PERCENTAGE -> calculatePercentageDiscountPrice(product.getPrice(), promoCode.getAmount());
     };
   }
 
@@ -100,8 +99,7 @@ public class PriceCalculatorFacade {
 
   private BigDecimal calculatePercentageDiscountPrice(BigDecimal originalPrice,
       BigDecimal discountAmount) {
-    BigDecimal discount = originalPrice.multiply(
-        discountAmount.divide(DIVIDER, RoundingMode.HALF_UP));
+    BigDecimal discount = originalPrice.multiply(discountAmount.divide(DIVIDER, RoundingMode.HALF_UP));
     BigDecimal discountedPrice = originalPrice.subtract(discount).setScale(2, RoundingMode.HALF_UP);
 
     return discountedPrice.max(BigDecimal.ZERO);

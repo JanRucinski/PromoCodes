@@ -52,7 +52,7 @@ public class PromoCode {
     this.maxUsages = request.getMaxUsages();
     this.currentUsages = 0;
     this.usability = ACTIVE;
-    this.amount = request.getAmount();
+    this.amount = request.getAmount().setScale(2, BigDecimal.ROUND_HALF_UP);
     this.currency = request.getCurrency();
     this.expirationDate = request.getExpirationDate();
     this.discountType = request.getDiscountType();

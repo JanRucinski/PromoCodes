@@ -7,7 +7,7 @@ import static com.sii.promocodes.promocode.domain.PromoCodeFixture.*
 
 class PriceCalculatorSpec extends PriceCalculatorBaseSpec {
 
-    def "should calculate price with a matching promo code"() {
+    def "should calculate price with a matching promo code of type FLAT"() {
         when:
         var response = priceCalculatorFacade.calculatePrice(createCalculatePriceRequest(
                 {
@@ -17,7 +17,20 @@ class PriceCalculatorSpec extends PriceCalculatorBaseSpec {
         ))
 
         then:
-        response.calculatedPrice == CALCULATED_PRICE
+        response.calculatedPrice == CALCULATED_PRICE_FLAT_10
+    }
+
+    def "should calculate price with a matching promo code of type PERCENTAGE"() {
+        when:
+        var response = priceCalculatorFacade.calculatePrice(createCalculatePriceRequest(
+                {
+                    productId = EUR_PRODUCT_ID
+                    promoCode = EUR_CODE_ACTIVE_50_PERCENT
+                }
+        ))
+
+        then:
+        response.calculatedPrice == CALCULATED_PRICE_PERCENTAGE_50
     }
 
     def "should return base price and a warning when calculating with an expired promo code" () {

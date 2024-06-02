@@ -27,6 +27,7 @@ class PriceCalculatorBaseSpec extends Specification {
             getPromoCode(EUR_CODE_EXPIRED) >> createExpiredPromoCodeDto()
             getPromoCode(EUR_CODE_DEPLETED) >> createDepletedPromoCodeDto()
             getPromoCode(EUR_CODE_ACTIVE_999) >> createBigPromoCodeDto()
+            getPromoCode(EUR_CODE_ACTIVE_50_PERCENT) >> createPromoCodeWith50PercentDiscount()
         }
 
         priceCalculatorFacade = new PriceCalculatorFacade(productFacade, promoCodeFacade)

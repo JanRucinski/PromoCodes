@@ -13,7 +13,7 @@ class ProductFixture {
     static final String EUR_PRODUCT_NAME = "product EUR"
     static final String USD_PRODUCT_NAME = "product USD"
     static final String DESCRIPTION = "product description"
-    static final BigDecimal PRICE = BigDecimal.valueOf(100)
+    static final BigDecimal PRICE = BigDecimal.valueOf(200)
 
     static class ProductFixtureBuilder {
         UUID id = EUR_PRODUCT_ID

@@ -15,12 +15,13 @@ public interface BaseRepository<T, ID> extends CrudRepository<T, ID> {
     return findById(id).orElseThrow(() -> throwNoSuchElementException("id", id));
   }
 
-  default NoSuchElementException throwNoSuchElementException(@NonNull String idName,
-      Object propertyValue) {
+  default NoSuchElementException throwNoSuchElementException(
+      @NonNull String idName, Object propertyValue) {
     return new NoSuchElementException(
         getEntityName() + " with " + idName + ":" + propertyValue + " not found");
   }
 
   @Override
   List<T> findAll();
+
 }

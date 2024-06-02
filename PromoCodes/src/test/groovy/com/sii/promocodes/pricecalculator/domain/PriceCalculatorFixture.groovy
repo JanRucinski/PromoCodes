@@ -7,8 +7,9 @@ import static com.sii.promocodes.promocode.domain.PromoCodeFixture.EUR_CODE_ACTI
 
 class PriceCalculatorFixture {
 
-    static final BigDecimal BASE_PRICE = BigDecimal.valueOf(100)
-    static final BigDecimal CALCULATED_PRICE = BigDecimal.valueOf(90)
+    static final BigDecimal BASE_PRICE = BigDecimal.valueOf(200)
+    static final BigDecimal CALCULATED_PRICE_FLAT_10 = BigDecimal.valueOf(190)
+    static final BigDecimal CALCULATED_PRICE_PERCENTAGE_50 = BigDecimal.valueOf(100)
     static final String CURRENCIEC_MISMATCH_WARNING = "The currencies do not match, the price was not adjusted"
     static final String PROMOCODE_EXPIRED_WARNING = "The PromoCode is Expired, the price was not adjusted"
     static final String PROMOCODE_DEPLETED_WARNING = "The PromoCode is Depleted, the price was not adjusted"

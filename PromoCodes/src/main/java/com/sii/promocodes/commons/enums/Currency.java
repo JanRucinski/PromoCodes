@@ -1,5 +1,8 @@
 package com.sii.promocodes.commons.enums;
 
 public enum Currency {
-  EUR, USD, PLN
+  EUR,
+  USD,
+  PLN,
+  GBP
 }

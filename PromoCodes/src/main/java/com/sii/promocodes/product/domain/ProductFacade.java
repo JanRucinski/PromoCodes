@@ -13,11 +13,11 @@ public class ProductFacade {
   private final ProductRepository productRepository;
 
   public ProductApi.Product createProduct(ProductApi.CreateProductRequest request) {
+
     Product product = new Product(request);
     productRepository.save(product);
     return product.toDto();
   }
-
 
   public List<ProductApi.Product> getAllProducts() {
     return productRepository.findAll().stream()

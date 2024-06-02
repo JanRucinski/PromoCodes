@@ -1,9 +1,11 @@
 package com.sii.promocodes.commons.infrastructure;
 
+import com.sii.promocodes.product.dto.ProductNotFoundException;
 import com.sii.promocodes.promocode.dto.PromoCodeAlreadyExistsException;
 import com.sii.promocodes.promocode.dto.PromoCodeNotFoundException;
 import com.sii.promocodes.promocode.dto.PromoCodeNotUsableException;
 import com.sii.promocodes.promocode.dto.PromoCodeValidationException;
+import java.util.NoSuchElementException;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,18 @@ public class HttpExceptionHandler {
   @ExceptionHandler(PromoCodeValidationException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ErrorResponse handlePromoCodeValidationException(PromoCodeValidationException e) {
+    return new ErrorResponse(e);
+  }
+
+  @ExceptionHandler(ProductNotFoundException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ErrorResponse handleProductValidationException(ProductNotFoundException e) {
+    return new ErrorResponse(e);
+  }
+
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ErrorResponse handleNoSuchElementException(NoSuchElementException e) {
     return new ErrorResponse(e);
   }
 

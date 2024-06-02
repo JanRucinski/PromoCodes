@@ -12,6 +12,17 @@ class PromoCodeSpec extends PromoCodeBaseSpec{
         response == createPromoCodeDto()
     }
 
+    def "should get a promo code" () {
+        given:
+        promoCodeFacade.createPromoCode(createPromoCodeRequest())
+
+        when:
+        var response = promoCodeFacade.getPromoCode(EUR_CODE_ACTIVE)
+
+        then:
+        response.code == EUR_CODE_ACTIVE
+    }
+
     def "should get all promo codes"() {
         given:
         promoCodeFacade.createPromoCode(createPromoCodeRequest())
