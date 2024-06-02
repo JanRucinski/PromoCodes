@@ -27,7 +27,8 @@ class PriceCalculatorRestITSpec extends Specification {
     @Autowired
     MockMvc mockMvc
 
-    ObjectMapper objectMapper = new ObjectMapper()
+    @Autowired
+    ObjectMapper objectMapper
 
     def "should calculate the price" () {
 

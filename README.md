@@ -1,6 +1,6 @@
 # PromoCodes
 
-PromoCodes is a Java Swing application designed to manage discount codes for sales or promotions (also known as promo codes). This application provides REST endpoints required for all neccesary operations listed in TASK.md. It also includes Swagger API documentation to facilitate interaction with its backend services.
+PromoCodes is a Java Spring application designed to manage discount codes for sales or promotions (also known as promo codes). This application provides REST endpoints required for all neccesary operations listed in TASK.md.
 
 ## Features
 

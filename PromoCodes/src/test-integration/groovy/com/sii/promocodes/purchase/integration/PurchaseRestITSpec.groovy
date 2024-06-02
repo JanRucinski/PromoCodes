@@ -31,9 +31,8 @@ class PurchaseRestITSpec extends Specification {
     @Autowired
     MockMvc mockMvc
 
-    ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule())
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+    @Autowired
+    ObjectMapper objectMapper
 
     def "should create a purchase"() {
         when:
