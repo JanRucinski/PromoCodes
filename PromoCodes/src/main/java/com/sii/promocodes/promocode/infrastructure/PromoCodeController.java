@@ -25,7 +25,7 @@ public class PromoCodeController {
 
   private final PromoCodeFacade promoCodeFacade;
 
-  @Operation(summary = "Create a promo code", description = "Create a promo code with a code, max usages, discount amount, discount type, currency and expiration date")
+  @Operation(summary = "Create a promo code", description = "Create a promo code with a code, max usages(greater than 0), discount amount(greater than 0), discount type, currency and expiration date")
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
   public PromoCodeApi.PromoCode createPromoCode(
