@@ -17,7 +17,7 @@ class PurchaseSpec extends PurchaseBaseSpec{
         var response = purchaseFacade.generateSalesReport()
 
         then:
-        print(response)
+        response == createSalesReport()
     }
 
 }
