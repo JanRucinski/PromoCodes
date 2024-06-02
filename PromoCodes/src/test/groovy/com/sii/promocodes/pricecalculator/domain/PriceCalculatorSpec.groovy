@@ -87,4 +87,5 @@ class PriceCalculatorSpec extends PriceCalculatorBaseSpec {
         then:
         response.calculatedPrice == 0
     }
+
 }

@@ -11,6 +11,7 @@ import com.sii.promocodes.promocode.dto.PromoCodeApi;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class PromoCode {
 
   @Id
-  @NotNull
+  @NotBlank
   private String code;
 
   @NotNull

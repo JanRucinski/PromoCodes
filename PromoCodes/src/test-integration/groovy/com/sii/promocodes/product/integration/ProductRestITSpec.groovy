@@ -57,4 +57,35 @@ class ProductRestITSpec extends Specification {
         then:
         response.andExpect(status().isBadRequest())
     }
+
+    def "should not create a product with negative price"() {
+        given:
+        def request = createProductRequest({
+            it.price = -1
+        })
+
+        when:
+        def response = mockMvc.perform(post("/api/product")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        response.andExpect(status().isBadRequest())
+    }
+
+    def "should not create a product without a currency"() {
+        given:
+        def request = createProductRequest({
+            it.currency = null
+        })
+
+        when:
+        def response = mockMvc.perform(post("/api/product")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        response.andExpect(status().isBadRequest())
+    }
+
 }

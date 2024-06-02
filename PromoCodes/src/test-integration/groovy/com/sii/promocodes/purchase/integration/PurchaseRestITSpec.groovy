@@ -48,4 +48,5 @@ class PurchaseRestITSpec extends Specification {
         and:
         1 * purchaseFacade.createPurchase(createPurchaseRequest()) >> createPurchaseDto()
     }
+
 }

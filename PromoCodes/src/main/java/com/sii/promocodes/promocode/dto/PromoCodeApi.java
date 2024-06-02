@@ -4,6 +4,7 @@ import com.sii.promocodes.commons.enums.Currency;
 import com.sii.promocodes.commons.enums.DiscountType;
 import com.sii.promocodes.commons.enums.Usability;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
@@ -18,7 +19,7 @@ public class PromoCodeApi {
   public static class PromoCode {
 
     @Schema(description = "promo code", example = "PROMO2024")
-    @NotNull
+    @NotBlank
     String code;
 
     @Schema(description = "max usages", example = "10")
@@ -55,7 +56,7 @@ public class PromoCodeApi {
   @Value
   public static class CreatePromoCodeRequest {
 
-    @NotNull
+    @NotBlank
     String code;
 
     @Positive
