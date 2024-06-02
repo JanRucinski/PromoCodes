@@ -9,13 +9,12 @@ PromoCodes is a Java Spring application designed to manage discount codes for sa
 - **Promo Code Endpoints**
 - **Price Calculator Endpoints**
 - **Purchases Endpoints**
-- **Unit Testing**
-- **Integration Testing**
+- **Unit and Integration Testing**: Written in Groovy with Spock Framework
 - **Swagger API Documentation**: Interactive API documentation for easy integration and testing.
 
 ## Prerequisites
 
-- Java Development Kit (JDK) 8 or later
+- Java Development Kit (JDK) 17 or later
 - Maven (for building the project)
 - An IDE (e.g., IntelliJ IDEA, Eclipse) is recommended for running and debugging
 
@@ -47,3 +46,8 @@ The application includes Swagger API documentation for interacting with its back
 
 1. Start the PromoCodes application.
 2. Open a web browser and navigate to http://localhost:8080/swagger-ui.html.
+
+
+## Postman collection
+
+The project includes a Postman collection for easier API testing
