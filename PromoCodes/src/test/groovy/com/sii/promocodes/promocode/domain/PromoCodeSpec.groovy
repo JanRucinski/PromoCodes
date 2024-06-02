@@ -1,15 +1,29 @@
 package com.sii.promocodes.promocode.domain
 
+import com.sii.promocodes.commons.enums.DiscountType
+
 import static com.sii.promocodes.promocode.domain.PromoCodeFixture.*
 
 class PromoCodeSpec extends PromoCodeBaseSpec{
 
-    def "should create a promo code"() {
+    def "should create a promo code with type FLAT"() {
         when:
         var response = promoCodeFacade.createPromoCode(createPromoCodeRequest())
 
         then:
         response == createPromoCodeDto()
+    }
+
+    def "should create a promo code with type PERCENTAGE"() {
+        when:
+        var response = promoCodeFacade.createPromoCode(createPromoCodeRequest({
+            discountType = DiscountType.PERCENTAGE
+        }))
+
+        then:
+        response == createPromoCodeDto({
+            discountType = DiscountType.PERCENTAGE
+        })
     }
 
     def "should get a promo code" () {

@@ -1,9 +1,7 @@
 package com.sii.promocodes.purchase.domain
 
 import com.sii.promocodes.commons.enums.Currency
-import com.sii.promocodes.product.dto.ProductApi
 import com.sii.promocodes.purchase.dto.PurchaseApi
-import io.swagger.v3.oas.annotations.media.Schema
 
 import java.time.LocalDate
 
@@ -15,7 +13,7 @@ class PurchaseFixture {
     static final UUID EUR_PRODUCT_ID = UUID.fromString("f1f8b3e4-3b3b-4b7e-8b7e-3b3b4b7e8b7e")
     static final String EUR_PRODUCT_NAME = "product EUR"
     static final String PROMO_CODE = "promoCode"
-    static final BigDecimal ORIGINAL_PRICE = BigDecimal.valueOf(100)
+    static final BigDecimal ORIGINAL_PRICE = BigDecimal.valueOf(200)
     static final BigDecimal DISCOUNT = BigDecimal.valueOf(10)
 
     static class PurchaseFixtureBuilder {
@@ -61,6 +59,16 @@ class PurchaseFixture {
     static PurchaseApi.Purchase createPurchase() {
         createPurchaseDto({
         })
+    }
+
+    static PurchaseApi.PurchaseReport createSalesReport() {
+        PurchaseApi.SalesReportEntry entry = new PurchaseApi.SalesReportEntry(
+                Currency.EUR,
+                BigDecimal.valueOf(100),
+                BigDecimal.valueOf(10),
+                1
+        )
+        return new PurchaseApi.PurchaseReport(Collections.singletonList(entry))
     }
 
 }

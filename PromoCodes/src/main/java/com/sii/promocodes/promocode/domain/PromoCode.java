@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import lombok.NoArgsConstructor;
 
@@ -52,7 +53,7 @@ public class PromoCode {
     this.maxUsages = request.getMaxUsages();
     this.currentUsages = 0;
     this.usability = ACTIVE;
-    this.amount = request.getAmount().setScale(2, BigDecimal.ROUND_HALF_UP);
+    this.amount = request.getAmount().setScale(2, RoundingMode.HALF_UP);
     this.currency = request.getCurrency();
     this.expirationDate = request.getExpirationDate();
     this.discountType = request.getDiscountType();

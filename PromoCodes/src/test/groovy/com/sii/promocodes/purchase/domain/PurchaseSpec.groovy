@@ -4,12 +4,20 @@ import static com.sii.promocodes.purchase.domain.PurchaseFixture.*
 
 class PurchaseSpec extends PurchaseBaseSpec{
 
-    def "should create a purchase"() {
+    def "should create a purchase" () {
         when:
         var response = purchaseFacade.createPurchase(createPurchaseRequest())
 
         then:
-        response == createPurchaseDto()
+        response == createPurchase()
+    }
+
+    def "should generate a report" () {
+        when:
+        var response = purchaseFacade.generateSalesReport()
+
+        then:
+        print(response)
     }
 
 }

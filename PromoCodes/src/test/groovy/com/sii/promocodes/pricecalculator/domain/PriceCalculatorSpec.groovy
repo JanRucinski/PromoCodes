@@ -80,7 +80,7 @@ class PriceCalculatorSpec extends PriceCalculatorBaseSpec {
         var response = priceCalculatorFacade.calculatePrice(createCalculatePriceRequest(
                 {
                     productId = EUR_PRODUCT_ID
-                    promoCode = EUR_CODE_ACTIVE_999
+                    promoCode = EUR_CODE_ACTIVE_BIG
                 }
         ))
 

@@ -4,6 +4,7 @@ import com.sii.promocodes.commons.enums.Currency
 import com.sii.promocodes.commons.enums.DiscountType
 import com.sii.promocodes.commons.enums.Usability
 import com.sii.promocodes.promocode.dto.PromoCodeApi
+import com.sii.promocodes.purchase.dto.PurchaseApi
 
 import java.time.LocalDate
 
@@ -17,19 +18,19 @@ class PromoCodeFixture {
     static final String EUR_CODE_ACTIVE = "CODEACTIVE"
     static final String EUR_CODE_EXPIRED = "CODEEXPIRED"
     static final String EUR_CODE_DEPLETED = "CODEDEPLETED"
-    static final String EUR_CODE_ACTIVE_999 = "CODEACTIVE999"
+    static final String EUR_CODE_ACTIVE_BIG = "CODEACTIVEBIG"
     static final String EUR_CODE_ACTIVE_50_PERCENT = "CODEACTIVE50PERCENT"
     static final int MAX_USAGES = 10
-    static final BigDecimal AMOUNT_10 = BigDecimal.valueOf(10)
+    static final BigDecimal AMOUNT_10 = BigDecimal.valueOf(10.00)
     static final BigDecimal AMOUNT_50 = BigDecimal.valueOf(50.00)
-    static final BigDecimal AMOUNT_999 = BigDecimal.valueOf(999)
+    static final BigDecimal AMOUNT_BIG = BigDecimal.valueOf(999999999.00)
     static final LocalDate EXPIRATION_DATE_ACTIVE_CODE = LocalDate.now().plusDays(10)
     static final LocalDate EXPIRATION_DATE_EXPIRED_CODE = LocalDate.now().minusDays(10)
 
     static class PromoCodeFixtureBuilder {
         String code = EUR_CODE_ACTIVE
         int maxUsages = MAX_USAGES
-        BigDecimal amount = AMOUNT_10
+        BigDecimal amount = AMOUNT_10.setScale(2)
         Currency currency = EUR
         LocalDate expirationDate = EXPIRATION_DATE_ACTIVE_CODE
         int currentUsages = 0
@@ -97,7 +98,7 @@ class PromoCodeFixture {
 
     static PromoCodeApi.PromoCode createBigPromoCodeDto() {
         createPromoCodeDto({
-            amount = AMOUNT_999
+            amount = AMOUNT_BIG
         })
     }
 
